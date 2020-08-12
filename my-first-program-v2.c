@@ -5,13 +5,25 @@ int main(void)
 {
     Init(); //initialise - initialises the microcontroller ports
 
-    StatusLED(RED);
-    StatusLED(YELLOW);
-    StatusLED(GREEN);
-    StatusLED(OFF);
+    long counter = 0;
 
     while (1)
-        ; //eternal loop - a way of preventing the program from 'ending'
+    {
+        counter++;
+
+        if (counter < 5000)
+        {
+            StatusLED(GREEN);
+        }
+        else if (counter > 5000)
+        {
+            StatusLED(RED);
+            if (counter > 10000)
+            {
+                counter = 0;
+            }
+        }
+    }
 
     return 0; //end the program - no errors
 }
