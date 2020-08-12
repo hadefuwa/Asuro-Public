@@ -5,8 +5,7 @@ int main(void)
 {
     Init(); //initialise - initialises the microcontroller ports
 
-    StatusLED(RED); // small white led nex to switch - turn RED
-    //Valid parameter values are OFF, GREEN, RED or YELLOW
+    StatusLED(RED);
     StatusLED(YELLOW);
     StatusLED(GREEN);
     StatusLED(OFF);
