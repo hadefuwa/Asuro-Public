@@ -1,35 +1,36 @@
-//my first program
+//my first program V4
+//Sleep Function
+
 #include "asuro.h"
 
 /*
-Loop:
-    Counter increment
-    if the counter is less than X
-        LED Green
-    otherwise if more than X
-        LED red
-    if counter is 2X
-        reset counter
+Infinite Loop:
+    For loop 1000x:
+        Green LED
+        Sleep for 3ms
+    For loop 1000x:
+        RED LED
+        Sleep for 3ms
 */
 
 int main(void)
 {
     Init(); //initialise - initialises the microcontroller ports
 
-    long counter = 0;
+    int i = 0;
 
     while (1)
     {
-        for (int i = 0; i > 1000; i++)
+        for (i = 0; i < 100; i++) //3ms * 100 = 0.3 seconds
         {
             StatusLED(GREEN);
-            MSleep(216);
+            Sleep(216); //Sleep processor for 3ms
         }
 
-        for (int i = 0; i > 1000; i++)
+        for (i = 0; i < 100; i++) //3ms * 100 = 0.3 seconds
         {
             StatusLED(RED);
-            MSleep(216);
+            Sleep(216); //Sleep processor for 3ms
         }
     }
 
