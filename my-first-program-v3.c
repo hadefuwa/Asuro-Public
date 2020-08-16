@@ -19,12 +19,12 @@ int main(void)
 
     while (1)
     {
-        for (i = 0; i < 20000; i++)
+        for (i = 0; i < 1000; i++)
         {
             StatusLED(GREEN);
         }
 
-        for (int i = 0; i < 20000; i++)
+        for (int i = 0; i < 1000; i++)
         {
             StatusLED(RED);
         }
