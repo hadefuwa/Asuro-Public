@@ -18,9 +18,5 @@ int main(void)
         Sleep(216); //Sleep processor for 3ms
     }
 
-    MotorDir(BREAK, BREAK); //Read page 67
-    MotorSpeed(0, 0);       //Read page 68
-    StatusLED(RED);
-
     return 0;
 }
