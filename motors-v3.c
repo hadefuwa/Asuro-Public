@@ -1,5 +1,5 @@
 // Introduction to Motors - MotorDir & MotorSpeed
-// Drive forward for a certain amount of time then reverse for a certain amount of time.. then nothing
+// Drive forward for a certain amount of time then reverse for a certain amount of time.. then stop
 
 #include "asuro.h" // <<<<<<<<<<<<<
 
