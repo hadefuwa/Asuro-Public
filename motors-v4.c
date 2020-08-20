@@ -1,4 +1,5 @@
 // Introduction to Motors - MotorDir & MotorSpeed
+// Drive forward then reverse on a loop
 
 #include "asuro.h" // <<<<<<<<<<<<<
 
