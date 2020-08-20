@@ -1,18 +1,39 @@
-#include "asuro.h"
+// Code on page 60
+// Pollswitch code
+
+/*
+Original Code
+#include “asuro.h”
+int main(void) {
+while (1) {
+if (PollSwitch()>0) {StatusLED(RED);}
+else {StatusLED(GREEN);}
+}
+}
+
+*/
+
+#include "asuro.h" // <<<<<<<<<<<<<
 
 int main(void)
 {
-    MotorDir(FWD, FWD);   // Both engines running forward
-    MotorSpeed(120, 120); // Both engines running at around half speed
-    StatusLED(GREEN);     // Turn on Status-LED green
-    while (PollSwitch() == 0)
-    {                               // As long as there is no collision
-        SerWrite(“All OK !\n”, 10); // ... Feeling groovy ....
-    }
-    MotorSpeed(0, 0); // Collision! Stop immediatedly!
-    StatusLED(RED);   // Turn on Status-LED red
+    Init(); //initialise - initialises the microcontroller ports
+
     while (1)
     {
-        SerWrite(“Ouch !\n”, 5); // start crying!
+        if (PollSwitch() > 0) //Calling pollswitch function
+        // queries the front switches via polling - value of 0 = not pressed
+        // if it is pressed = value 1
+        {
+            StatusLED(RED);
+            //stop
+        }
+        else // value of pollswitch's is 0
+        {
+            StatusLED(GREEN);
+            //drive forward
+        }
     }
+
+    return 0;
 }
