@@ -21,6 +21,7 @@ int main(void)
 
     while (1)
     {
+
         for (i = 0; i < 100; i++) //3ms * 100 = 0.3 seconds
         {
             StatusLED(GREEN);
