@@ -1,35 +1,44 @@
-// Introduction to Motors - MotorDir & MotorSpeed
-// Drive forward for a certain amount of time then reverse for a certain amount of time.. then stop
+// Introduction to Motors - MotorDir & MotorSpeed - Part 3
+// Drive the Asuro Forward then stop and then reverse
 
-#include "asuro.h" // <<<<<<<<<<<<<
+#include "asuro.h" //<<<<<<<
 
 int main(void)
 {
-    Init(); //initialise - initialises the microcontroller ports
-
     int i = 0;
+    Init();
 
-    MotorDir(FWD, FWD);   //Read page 67
-    MotorSpeed(150, 150); //Read page 68
     StatusLED(GREEN);
+    MotorDir(FWD, FWD);   //Valid parameters are FWD, RWD, BREAK and FREE
+    MotorSpeed(140, 150); //Can use any value from 0 - 255 (min 60 to move))
 
-    for (i = 0; i < 500; i++) //3ms * 1000 = 1.5 seconds - This isn't totally accurate and will need adjusting
+    for (i = 0; i < 300; i++) //3ms * 300 = 900ms
     {
-        Sleep(216); //Sleep processor for 3ms
+        Sleep(216); //sleep the processor for 3ms
     }
 
-    MotorDir(RWD, RWD);   //Read page 67
-    MotorSpeed(150, 150); //Read page 68
+    MotorDir(BREAK, BREAK);
+    MotorSpeed(0, 0);
     StatusLED(RED);
 
-    for (i = 0; i < 500; i++) //3ms * 1000 = 1.5 seconds
+    for (i = 0; i < 50; i++) //3ms * 50 = 150ms
     {
-        Sleep(216); //Sleep processor for 3ms
+        Sleep(216); //sleep the processor for 3ms
     }
 
+    BackLED(ON, ON);
+    MotorDir(RWD, RWD);
+    MotorSpeed(140, 150);
+
+    for (i = 0; i < 300; i++) //3ms * 300 = 900ms
+    {
+        Sleep(216); //sleep the processor for 3ms
+    }
+
+    MotorDir(BREAK, BREAK);
+    MotorSpeed(0, 0);
     StatusLED(OFF);
-    MotorDir(BREAK, BREAK); //Read page 67
-    MotorSpeed(0, 0);       //Read page 68
+    BackLED(OFF, OFF);
 
     return 0;
 }

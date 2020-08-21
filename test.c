@@ -1,39 +1,44 @@
-// Code on page 60
-// Pollswitch code
+// Introduction to Motors - MotorDir & MotorSpeed - Part 3
+// Drive the Asuro Forward then stop and then reverse
 
-/*
-Original Code
-#include “asuro.h”
-int main(void) {
-while (1) {
-if (PollSwitch()>0) {StatusLED(RED);}
-else {StatusLED(GREEN);}
-}
-}
-
-*/
-
-#include "asuro.h" // <<<<<<<<<<<<<
+#include "asuro.h" //<<<<<<<
 
 int main(void)
 {
-    Init(); //initialise - initialises the microcontroller ports
+    int i = 0;
+    Init();
 
-    while (1)
+    StatusLED(GREEN);
+    MotorDir(FWD, FWD);   //Valid parameters are FWD, RWD, BREAK and FREE
+    MotorSpeed(140, 150); //Can use any value from 0 - 255 (min 60 to move))
+
+    for (i = 0; i < 300; i++) //3ms * 300 = 900ms
     {
-        if (PollSwitch() > 0) //Calling pollswitch function
-        // queries the front switches via polling - value of 0 = not pressed
-        // if it is pressed = value 1
-        {
-            StatusLED(RED);
-            //stop
-        }
-        else // value of pollswitch's is 0
-        {
-            StatusLED(GREEN);
-            //drive forward
-        }
+        Sleep(216); //sleep the processor for 3ms
     }
+
+    MotorDir(BREAK, BREAK);
+    MotorSpeed(0, 0);
+    StatusLED(RED);
+
+    for (i = 0; i < 50; i++) //3ms * 50 = 150ms
+    {
+        Sleep(216); //sleep the processor for 3ms
+    }
+
+    BackLED(ON, ON);
+    MotorDir(RWD, RWD);
+    MotorSpeed(140, 150);
+
+    for (i = 0; i < 300; i++) //3ms * 300 = 900ms
+    {
+        Sleep(216); //sleep the processor for 3ms
+    }
+
+    MotorDir(BREAK, BREAK);
+    MotorSpeed(0, 0);
+    StatusLED(OFF);
+    BackLED(OFF, OFF);
 
     return 0;
 }
