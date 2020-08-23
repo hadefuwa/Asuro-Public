@@ -1,35 +1,14 @@
-// Introduction to Motors - Spin left and right on a loop
-// Spin to the right with the right back light on, get asuro to spin to left with the left back light on - on a loop continuously
-
-#include "asuro.h" 
-
+#include "asuro.h"
 int main(void)
 {
-    int i = 0;
-
-    Init();
-    while (1)
-    {
-        StatusLED(GREEN);
-        MotorDir(FWD, RWD);
-        MotorSpeed(150, 150);
-        BackLED(OFF, ON);
-
-        for (i = 0; i < 300; i++) //900ms
-        {
-            Sleep(216);
-        }
-
-        StatusLED(RED);
-        MotorDir(RWD, FWD);
-        MotorSpeed(150, 150);
-        BackLED(ON, OFF);
-
-        for (i = 0; i < 300; i++) //900ms
-        {
-            Sleep(216);
-        }
+    int counter; // defi ne a variable for counting
+    for (counter = 0; counter < 10; counter++)
+    {                                 // repeat ten times:
+        SerWrite("Go ahead !\n", 10); // “Go ahead” message
     }
-
-    return 0;
+    MotorDir(FWD, FWD);   // Both engines forward
+    MotorSpeed(120, 120); // Both engines running at around half speed
+    while (1)
+    { // No more action!
+    }
 }

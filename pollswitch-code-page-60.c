@@ -13,7 +13,7 @@ else {StatusLED(GREEN);}
 
 */
 
-#include "asuro.h" // <<<<<<<<<<<<<
+#include "asuro.h"
 
 int main(void)
 {
