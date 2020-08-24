@@ -1,31 +1,43 @@
+/*
 
-#include "asuro.h"
+int lData[2]; // Provide memory space for measurement results
+LineData(lData); // Reading measurement data
+if (lData[1] > lData[0])
+ command1;
+else
+ command2;
+
+*/
+
+#include "asuro.h" //<<<<<<<<
 
 int main(void)
 {
     Init();
     while (1)
     {
-        unsigned int iData[2];
         FrontLED(ON);
+        unsigned int iData[2];
 
         while (1)
         {
             LineData(iData);
 
-            if ((iData[0] < 800) || (iData[1] < 800))
+            if ((iData[0] < 800) && (iData[1] < 800))
             {
                 if (iData[0] > iData[1])
                 {
-                    MotorDir(FWD, FWD);
-                    MotorSpeed(150, 120);
+                    MotorDir(Fwd, Fwd);
+                    MotorSpeed(120, 60);
                 }
-                else if (iData[0] < iData[1])
+                else
                 {
-                    MotorDir(FWD, FWD);
-                    MotorSpeed(120, 150);
+                    MotorDir(Fwd, Fwd);
+                    MotorSpeed(110, 150);
                 }
             }
         }
     }
+
+    return 0;
 }

@@ -1,13 +1,11 @@
 /*
 
-Turn on the front LED
-Read the data received by the two phototransistors
-Compare the data received to a midway value
-if under 800 then statusled green
-if over 800 then statusled red
-
-Midway value is half way between black and white
-midway value = 800
+int lData[2]; // Provide memory space for measurement results
+LineData(lData); // Reading measurement data
+if (lData[1] > lData[0])
+ command1;
+else
+ command2;
 
 */
 
@@ -27,11 +25,16 @@ int main(void)
 
             if ((iData[0] < 800) && (iData[1] < 800))
             {
-                StatusLED(GREEN);
-            }
-            else
-            {
-                StatusLED(RED);
+                if (iData[0] > iData[1])
+                {
+                    MotorDir(Fwd, Fwd);
+                    MotorSpeed(120, 60);
+                }
+                else
+                {
+                    MotorDir(Fwd, Fwd);
+                    MotorSpeed(110, 150);
+                }
             }
         }
     }
