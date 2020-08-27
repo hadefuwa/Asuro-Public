@@ -27,12 +27,12 @@ int main(void)
             {
                 if (iData[0] > iData[1])
                 {
-                    MotorDir(Fwd, Fwd);
+                    MotorDir(FWD, FWD);
                     MotorSpeed(120, 60);
                 }
                 else
                 {
-                    MotorDir(Fwd, Fwd);
+                    MotorDir(FWD, FWD);
                     MotorSpeed(60, 120);
                 }
             }
