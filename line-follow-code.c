@@ -33,7 +33,7 @@ int main(void)
                 else
                 {
                     MotorDir(Fwd, Fwd);
-                    MotorSpeed(110, 150);
+                    MotorSpeed(60, 120);
                 }
             }
         }
