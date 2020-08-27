@@ -1,6 +1,14 @@
 /*
 
-Line follow program that responds to collisions by reversing and spinning around then continuing
+Program Description: Line following program that responds to collissions by reversing and spinning around
+
+Outline
+Loop:
+    Line following code
+        if collision
+            reverse for 0.5s
+            spin 180 degrees
+LEDs Green if no collision, red if collision and whilst reversing
 
 */
 
@@ -18,93 +26,94 @@ int main(void)
         while (1)
         {
             LineData(iData);
-
-            if ((iData[0] < 1000) && (iData[1] < 1000)) //the brighter your environment the higher this number needs to be and vice versa
+            StatusLED(GREEN);
+            if ((iData[0] < 1000) && (iData[1] < 1000)) // the brighter your environment, the higher this value should be - and vice versa
             {
                 if (iData[0] > iData[1])
                 {
                     MotorDir(FWD, FWD);
-                    MotorSpeed(100, 60);
+                    MotorSpeed(120, 70);
+
+                    // check for collision
 
                     if (PollSwitch() > 0)
                     {
+                        //reversing
                         StatusLED(RED);
                         MotorDir(RWD, RWD);
                         MotorSpeed(100, 100);
 
-                        for (i = 0; i < 50; i++) //3ms * 100 = 0.3s
+                        for (i = 0; i < 50; i++)
                         {
-                            Sleep(216); //3ms
+                            Sleep(216);
                         }
 
+                        //spinning
                         MotorDir(FWD, RWD);
                         MotorSpeed(130, 130);
 
-                        for (i = 0; i < 100; i++) //3ms * 100 = 0.3s
+                        for (i = 0; i < 100; i++)
                         {
-                            Sleep(216); //3ms
+                            Sleep(216);
                         }
-
-                        MotorDir(FWD, FWD);
-                        StatusLED(GREEN);
                     }
                 }
                 else
                 {
                     MotorDir(FWD, FWD);
-                    MotorSpeed(60, 100);
+                    MotorSpeed(70, 120);
 
+                    // check for collision
                     if (PollSwitch() > 0)
                     {
+                        //reversing
                         StatusLED(RED);
                         MotorDir(RWD, RWD);
                         MotorSpeed(100, 100);
 
-                        for (i = 0; i < 50; i++) //3ms * 100 = 0.3s
+                        for (i = 0; i < 50; i++)
                         {
-                            Sleep(216); //3ms
+                            Sleep(216);
                         }
 
+                        //spinning
                         MotorDir(FWD, RWD);
                         MotorSpeed(130, 130);
 
-                        for (i = 0; i < 100; i++) //3ms * 100 = 0.3s
+                        for (i = 0; i < 100; i++)
                         {
-                            Sleep(216); //3ms
+                            Sleep(216);
                         }
-
-                        MotorDir(FWD, FWD);
-                        StatusLED(GREEN);
                     }
                 }
             }
 
-            else if ((iData[0] > 1000) && (iData[1] > 1000))
+            else
             {
                 MotorDir(FWD, FWD);
-                MotorSpeed(60, 60);
+                MotorSpeed(80, 80);
 
+                // check for collision
                 if (PollSwitch() > 0)
                 {
+                    //reversing
                     StatusLED(RED);
                     MotorDir(RWD, RWD);
                     MotorSpeed(100, 100);
 
-                    for (i = 0; i < 50; i++) //3ms * 100 = 0.3s
+                    for (i = 0; i < 50; i++)
                     {
-                        Sleep(216); //3ms
+                        Sleep(216);
                     }
 
+                    //spinning
                     MotorDir(FWD, RWD);
                     MotorSpeed(130, 130);
 
-                    for (i = 0; i < 100; i++) //3ms * 100 = 0.3s
+                    for (i = 0; i < 100; i++)
                     {
-                        Sleep(216); //3ms
+                        Sleep(216);
                     }
-
-                    MotorDir(FWD, FWD);
-                    StatusLED(GREEN);
                 }
             }
         }
