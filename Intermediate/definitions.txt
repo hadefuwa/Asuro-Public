@@ -1,0 +1,5 @@
+This Document Contains All My Asuro Definitions
+
+#define COLOURTHRESHOLD 1000 // 1500 is pure white & 0 pure black. Adjust for line accuracy 
+// This COLOURTHRESHOLD is used know whether the asuro is on the line or not
+// i.e. if less than 1000, its probably near a line, if less than 500 its definitely on the line etc.
